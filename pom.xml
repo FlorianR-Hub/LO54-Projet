@@ -21,8 +21,35 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
+        
+        <!-- JSF 2 API + Impl -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        
+        <!-- Primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>5.3</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>6.2.9</version>
+        </dependency>
+        
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.1.0.RELEASE</version>
+        </dependency>
+    </dependencies>
+   
     <build>
         <plugins>
             <plugin>
