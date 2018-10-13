@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 f?vr. 2016 22:46:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="fr.utbm.entity.Actor" optimistic-lock="version" schema="VIDEO" table="ACTOR">
+    <id name="id" type="int">
+      <column name="ID_ACTOR"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="lastname" type="string">
+      <column length="20" name="LASTNAME" not-null="true"/>
+    </property>
+    <property name="firstname" type="string">
+      <column length="20" name="FIRSTNAME"/>
+    </property>
+  </class>
+</hibernate-mapping>

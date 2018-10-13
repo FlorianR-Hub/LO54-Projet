@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 f?vr. 2016 22:46:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="fr.utbm.entity.Movie" optimistic-lock="version" schema="VIDEO" table="MOVIE">
+    <id name="id" type="int">
+      <column name="ID_MOVIE"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="title" type="string">
+      <column length="50" name="TITLE" not-null="true"/>
+    </property>
+    <property name="copies" type="int">
+      <column name="COPIES" not-null="true"/>
+    </property>
+    <property name="movieType" type="string">
+      <column length="20" name="MOVIE_TYPE" not-null="true"/>
+    </property>
+    
+<!--    <property name="mainActorId" type="java.lang.Integer">
+      <column name="MAIN_ACTOR_ID"/>
+    </property>-->
+    
+    <many-to-one name="mainActor" column="MAIN_ACTOR_ID" lazy="false" fetch="join"  />   
+    
+  </class>
+</hibernate-mapping>
