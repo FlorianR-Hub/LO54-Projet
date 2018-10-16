@@ -111,8 +111,4 @@ public class Client {
         return "Client{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", adresse=" + adresse + ", phone=" + phone + ", mail=" + mail + ", courseSessionId=" + courseSessionId + '}';
     }
 
-   
-    
-    
-    
 }

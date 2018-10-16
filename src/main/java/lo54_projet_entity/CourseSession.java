@@ -94,8 +94,5 @@ public class CourseSession {
     public String toString() {
         return "CourseSession{" + "id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", maxClients=" + maxClients + ", courseCode=" + courseCode + ", locationId=" + locationId + '}';
     }
-    
-    
-    
-    
+
 }
