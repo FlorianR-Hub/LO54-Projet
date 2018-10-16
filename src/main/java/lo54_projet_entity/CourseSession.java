@@ -5,16 +5,33 @@
  */
 package lo54_projet_entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author kaled
  */
+@Entity
+@Table(name="COURSE_SESSION")
 public class CourseSession {
-    private int id ; 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="ID")
+    private int id ;
+    @Column(name="START_DATE")
     private String startDate ; 
+    @Column(name="END_DATE")
     private String endDate ; 
+    @Column(name="MAX_CLIENT")
     private int maxClients ; 
+    @Column(name="COURSE_CODE")
     private String courseCode ; 
+    @Column(name="LOCATION_ID")
     private int locationId ; 
 
     public int getId() {

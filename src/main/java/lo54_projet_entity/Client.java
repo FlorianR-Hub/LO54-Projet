@@ -5,18 +5,36 @@
  */
 package lo54_projet_entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author kaled
  */
+@Entity
+@Table(name="CLIENT")
 public class Client {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="ID")
     private int id ; 
+    @Column(name="LASTNAME")
     private String lastName ; 
+    @Column(name="FIRSTNAME")
     private String firstName ; 
+    @Column(name="ADRESSE")
     private String adresse ;
+    @Column(name="PHONE")
     private String phone ; 
+    @Column(name="MAIL")
     private String mail ; 
+    @Column(name="COURSE_SESSION_ID")
     private int courseSessionId ; 
     
     

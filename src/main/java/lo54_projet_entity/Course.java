@@ -5,13 +5,21 @@
  */
 package lo54_projet_entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  *
  * @author kaled
  */
+@Entity
+@Table(name="COURSE")
 public class Course {
     
-    private String code ; 
+    @Column(name="CODE")
+    private String code ;
+    @Column(name="TITLE")
     private String title ;
 
     public void setCode(String code) {
