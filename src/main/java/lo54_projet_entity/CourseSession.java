@@ -10,12 +10,13 @@ package lo54_projet_entity;
  * @author kaled
  */
 public class CourseSession {
-    private int id ; 
-    private String startDate ; 
-    private String endDate ; 
-    private int maxClients ; 
-    private String courseCode ; 
-    private int locationId ; 
+
+    private int id;
+    private String startDate;
+    private String endDate;
+    private int maxClients;
+    private String courseCode;
+    private int locationId;
 
     public int getId() {
         return id;
@@ -77,8 +78,5 @@ public class CourseSession {
     public String toString() {
         return "CourseSession{" + "id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", maxClients=" + maxClients + ", courseCode=" + courseCode + ", locationId=" + locationId + '}';
     }
-    
-    
-    
-    
+
 }

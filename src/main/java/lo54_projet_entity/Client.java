@@ -10,17 +10,16 @@ package lo54_projet_entity;
  * @author kaled
  */
 public class Client {
-    
-    private int id ; 
-    private String lastName ; 
-    private String firstName ; 
-    private String adresse ;
-    private String phone ; 
-    private String mail ; 
-    private int courseSessionId ; 
-    
-    
-     public Client(String lastName, String firstName, String adresse, String phone, String mail, int courseSessionId) {
+
+    private int id;
+    private String lastName;
+    private String firstName;
+    private String adresse;
+    private String phone;
+    private String mail;
+    private int courseSessionId;
+
+    public Client(String lastName, String firstName, String adresse, String phone, String mail, int courseSessionId) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.adresse = adresse;
@@ -93,8 +92,4 @@ public class Client {
         return "Client{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", adresse=" + adresse + ", phone=" + phone + ", mail=" + mail + ", courseSessionId=" + courseSessionId + '}';
     }
 
-   
-    
-    
-    
 }

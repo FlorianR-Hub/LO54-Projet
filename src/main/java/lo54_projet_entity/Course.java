@@ -10,9 +10,9 @@ package lo54_projet_entity;
  * @author kaled
  */
 public class Course {
-    
-    private String code ; 
-    private String title ;
+
+    private String code;
+    private String title;
 
     public void setCode(String code) {
         this.code = code;
@@ -39,6 +39,5 @@ public class Course {
     public String toString() {
         return "Course{" + "code=" + code + ", title=" + title + '}';
     }
-    
-    
+
 }

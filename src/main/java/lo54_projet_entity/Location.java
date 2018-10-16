@@ -10,8 +10,9 @@ package lo54_projet_entity;
  * @author kaled
  */
 public class Location {
-    private int id ; // will be generated automaticly when we add new city to the database
-    private String city ;
+
+    private int id; // will be generated automaticly when we add new city to the database
+    private String city;
 
     public int getId() {
         return id;
@@ -20,8 +21,6 @@ public class Location {
     public String getCity() {
         return city;
     }
-
-  
 
     public void setCity(String city) {
         this.city = city;
@@ -35,7 +34,5 @@ public class Location {
     public String toString() {
         return "Location{" + "id=" + id + ", city=" + city + '}';
     }
-    
-    
-    
+
 }
