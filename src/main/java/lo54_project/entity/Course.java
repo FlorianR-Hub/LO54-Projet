@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lo54_projet_entity;
+package lo54_project.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

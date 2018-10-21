@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package lo54_project.dao;
-import lo54_projet_entity.Client;
+import java.util.ArrayList;
+import java.util.List;
+import lo54_project.entity.Client;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,29 +19,29 @@ public class ClientDao {
     
     public boolean CreateNewClient(String lastName, String firstName, String adresse, String phone, String mail, int courseSessionId)
     {
-    // create session factory
+    
 		SessionFactory factory = new Configuration()
 								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Client.class)
 								.buildSessionFactory();
 		
-		// create session
+		
 		Session session = factory.getCurrentSession();
                 boolean successful = false;
 		
 		try {			
-			// create a student object
+			
 			System.out.println("Creating new student object...");
 			Client tempClient = new Client(lastName, firstName, adresse, phone, mail, courseSessionId);
 			
-			// start a transaction
+			
 			session.beginTransaction();
 			
-			// save the student object
+			
 			System.out.println("Saving the student...");
 			session.save(tempClient);
 			
-			// commit transaction
+			
 			session.getTransaction().commit();
 			successful = true;
 			System.out.println("Done!");
@@ -52,6 +54,78 @@ public class ClientDao {
                  return successful;
 
     }
+    
+    
+     public boolean DeleteClient(String lastName, String firstName)
+    {
+    
+		SessionFactory factory = new Configuration()
+								.configure("hibernate.cfg.xml")
+								.addAnnotatedClass(Client.class)
+								.buildSessionFactory();
+		
+		
+		Session session = factory.getCurrentSession();
+                boolean successful = false;
+		
+		try {			
+			
+			
+			
+			session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			
+			session.createQuery("delete from CLIENT where LASTNAME='"+lastName+"' and FIRSTNAME='"+firstName + "'").executeUpdate();
+			
+			
+			session.getTransaction().commit();
+			
+			System.out.println("Done!");
+		} catch (HibernateException r) {  
+                    System.out.println(" transaction error");
+                } finally {
+			factory.close();
+                        session = null;
+		}
+                 return successful;
+    }
+     
+     public List<Client> GetClients()
+    {
+    
+		SessionFactory factory = new Configuration()
+								.configure("hibernate.cfg.xml")
+								.addAnnotatedClass(Client.class)
+								.buildSessionFactory();
+		
+		
+		Session session = factory.getCurrentSession();
+                List<Client> myClients = new ArrayList<Client>()  ;
+		try {			
+			
+			session.beginTransaction();
+			
+			
+			myClients = session.createQuery("from CLIENT").list();
+			
+			
+			
+			session.getTransaction().commit();
+			
+			System.out.println("Done!");
+			
+			
+		} catch (HibernateException r) {  
+                    System.out.println(" transaction error");
+                } finally {
+			factory.close();
+                        session = null;
+		}
+                 return myClients;
+    }
+    
+    
     
     
 }

@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package lo54_project.tests;
-
-import lo54_projet_entity.Client;
+import lo54_project.entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -42,6 +41,22 @@ public class HibernateTest {
 			session.getTransaction().commit();
 			
 			System.out.println("Done!");
+                        
+                        
+                     // now get a new session and start transaction
+			/*session = factory.getCurrentSession();
+			session.beginTransaction();
+			
+			
+			// delete student id=2
+			
+			
+			session.createQuery("delete from CLIENT where LASTNAME='krifa' and FIRSTNAME= 'khaled'").executeUpdate();
+			
+			// commit the transaction
+			session.getTransaction().commit();
+			
+			System.out.println("Done!");*/
 		}
 		finally {
 			factory.close();
