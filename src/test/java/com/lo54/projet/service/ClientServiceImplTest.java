@@ -5,6 +5,7 @@
  */
 package com.lo54.projet.service;
 
+import com.lo54.projet.service.impl.ClientServiceImpl;
 import com.lo54.projet.dao.interf.ClientDao;
 import com.lo54.projet.dao.data.Client;
 import org.junit.Before;

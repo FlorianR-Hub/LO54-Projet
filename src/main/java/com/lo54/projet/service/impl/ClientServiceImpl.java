@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lo54.projet.service;
+package com.lo54.projet.service.impl;
 
-import com.lo54.projet.dao.interf.CourseDao;
-import com.lo54.projet.dao.data.Course;
+import com.lo54.projet.service.interf.ClientService;
+import com.lo54.projet.dao.interf.ClientDao;
+import com.lo54.projet.dao.data.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +16,14 @@ import org.springframework.stereotype.Service;
  * @author Florian
  */
 @Service
-public class CourseServiceImpl implements CourseService {
+public class ClientServiceImpl implements ClientService {
 
     @Autowired
-    private CourseDao courseDao;
+    private ClientDao clientDao;
 
     @Override
-    public void newCourse(Course course) {
-        courseDao.create(course);
+    public void newClient(Client client) {
+        clientDao.create(client);
     }
+
 }

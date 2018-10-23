@@ -5,6 +5,7 @@
  */
 package com.lo54.projet.service;
 
+import com.lo54.projet.service.impl.CourseServiceImpl;
 import com.lo54.projet.dao.interf.CourseDao;
 import com.lo54.projet.dao.data.Course;
 import org.junit.Before;
