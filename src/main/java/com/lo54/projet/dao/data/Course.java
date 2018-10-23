@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lo54_project.entity;
+package com.lo54.projet.dao.data;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -14,13 +16,18 @@ import javax.persistence.Table;
  * @author kaled
  */
 @Entity
-@Table(name="COURSE")
-public class Course {
-    
-    @Column(name="CODE")
-    private String code ;
-    @Column(name="TITLE")
-    private String title ;
+@Table(name = "COURSE")
+public class Course implements Serializable {
+
+    @Column(name = "CODE")
+    @Id
+    private String code;
+    @Column(name = "TITLE")
+    private String title;
+
+    public Course() {
+
+    }
 
     public void setCode(String code) {
         this.code = code;

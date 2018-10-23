@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lo54_project.entity;
+package com.lo54.projet.dao.data;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,37 +18,28 @@ import javax.persistence.Table;
  * @author kaled
  */
 @Entity
-@Table(name="CLIENT")
-public class Client {
-    
+@Table(name = "CLIENT")
+public class Client implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID")
-    private int id ; 
-    @Column(name="LASTNAME")
-    private String lastName ; 
-    @Column(name="FIRSTNAME")
-    private String firstName ; 
-    @Column(name="ADRESSE")
-    private String adresse ;
-    @Column(name="PHONE")
-    private String phone ; 
-    @Column(name="MAIL")
-    private String mail ; 
-    @Column(name="COURSE_SESSION_ID")
-    private int courseSessionId ; 
-    
-    
-     public Client(String lastName, String firstName, String adresse, String phone, String mail, int courseSessionId) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.adresse = adresse;
-        this.phone = phone;
-        this.mail = mail;
-        this.courseSessionId = courseSessionId;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private int id;
+    @Column(name = "LASTNAME")
+    private String lastName;
+    @Column(name = "FIRSTNAME")
+    private String firstName;
+    @Column(name = "ADRESSE")
+    private String adresse;
+    @Column(name = "PHONE")
+    private String phone;
+    @Column(name = "MAIL")
+    private String mail;
+    @Column(name = "COURSE_SESSION_ID")
+    private int courseSessionId;
 
     public Client() {
+
     }
 
     public int getId() {

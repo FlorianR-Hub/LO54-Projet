@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lo54_project.entity;
+package com.lo54.projet.dao.data;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,22 +18,27 @@ import javax.persistence.Table;
  * @author kaled
  */
 @Entity
-@Table(name="COURSE_SESSION")
-public class CourseSession {
+@Table(name = "COURSE_SESSION")
+public class CourseSession implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID")
-    private int id ;
-    @Column(name="START_DATE")
-    private String startDate ; 
-    @Column(name="END_DATE")
-    private String endDate ; 
-    @Column(name="MAX_CLIENT")
-    private int maxClients ; 
-    @Column(name="COURSE_CODE")
-    private String courseCode ; 
-    @Column(name="LOCATION_ID")
-    private int locationId ; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private int id;
+    @Column(name = "START_DATE")
+    private String startDate;
+    @Column(name = "END_DATE")
+    private String endDate;
+    @Column(name = "MAX_CLIENTS")
+    private int maxClients;
+    @Column(name = "COURSE_CODE")
+    private String courseCode;
+    @Column(name = "LOCATION_ID")
+    private int locationId;
+
+    public CourseSession() {
+
+    }
 
     public int getId() {
         return id;
