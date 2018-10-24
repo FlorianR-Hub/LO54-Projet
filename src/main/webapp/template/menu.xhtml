@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <h:outputStylesheet library="css" name="menu.css" />
+
+    <h:form>
+        <p:menu toggleable="true" class="menu">
+            <p:menuitem value="Accueil" url="/pages/accueil.xhtml" styleClass="#{view.viewId.contains('accueil') ? 'active' : ''}"/>
+            <p:submenu label="Gestion des formations">
+                <p:menuitem value="Chercher des formations" url="/pages/searchFormations.xhtml" styleClass="#{view.viewId.contains('searchFormations') ? 'active' : ''}"/>
+                <p:menuitem value="Créer une nouvelle formation" url="/pages/createFormation.xhtml" styleClass="#{view.viewId.contains('createFormation') ? 'active' : ''}"/>
+            </p:submenu>
+        </p:menu>
+    </h:form>
+</ui:composition>

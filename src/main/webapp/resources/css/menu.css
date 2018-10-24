@@ -1,0 +1,8 @@
+.menu {
+    width: 95% !important;
+}
+
+.active {
+    background: #a0a0a0 !important;
+    color: black !important;
+}

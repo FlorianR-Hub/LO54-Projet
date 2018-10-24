@@ -7,6 +7,12 @@
     Without this configuration present, some functionality in the IDE may be limited or fail altogether.
     -->
     <libraries xmlns="http://www.netbeans.org/ns/cdnjs-libraries/1"/>
+    <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
+        <config-files>
+            <config-file>src/main/resources/applicationContext.xml</config-file>
+        </config-files>
+        <config-file-groups/>
+    </spring-data>
     <properties xmlns="http://www.netbeans.org/ns/maven-properties-data/1">
         <!--
         Properties that influence various parts of the IDE, especially code formatting and the like.
@@ -26,11 +32,6 @@
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js/libs</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
         <org-netbeans-modules-javascript2-requirejs.enabled>true</org-netbeans-modules-javascript2-requirejs.enabled>
         <org-netbeans-modules-projectapi.jsf_2e_language>JSP</org-netbeans-modules-projectapi.jsf_2e_language>
+        <org-netbeans-modules-html-editor-lib.default-xhtml-public-id>-//W3C//DTD XHTML 1.1//EN</org-netbeans-modules-html-editor-lib.default-xhtml-public-id>
     </properties>
-    <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
-        <config-files>
-            <config-file>src/main/resources/applicationContext.xml</config-file>
-        </config-files>
-        <config-file-groups/>
-    </spring-data>
 </project-shared-configuration>

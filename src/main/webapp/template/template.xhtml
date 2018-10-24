@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Projet LO54</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north"  minSize="40" resizable="true" closable="false" collapsible="true" gutter="0">
+                    Projet LO54
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" maxSize="65" closable="true" collapsible="true" gutter="0">
+                    KRIFA Khaled - RIFFLART Florian
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" minSize="295" collapsible="false" gutter="0">
+                    <ui:include src="menu.xhtml" />
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" gutter="0">
+                    <h:form id="mainForm">
+                        <ui:insert name="content"/>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+
