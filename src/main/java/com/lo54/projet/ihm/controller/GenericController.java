@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lo54.projet.ihm.model;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+package com.lo54.projet.ihm.controller;
 
 /**
  *
  * @author Florian
  */
-@Component("accueilModel")
-@Scope("session")
-public class AccueilModel {
+public abstract class GenericController {
 
+    public abstract void initModel();
 }

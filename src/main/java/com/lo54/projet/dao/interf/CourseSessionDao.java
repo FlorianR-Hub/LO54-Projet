@@ -17,4 +17,8 @@ public interface CourseSessionDao {
     public List<CourseSession> getCourseSessionsFilteredByDate(String date);
 
     public List<CourseSession> getCourseSessionsFilteredByCity(String city);
+
+    public List<CourseSession> getCourseSessionsByCode(String courseCode);
+
+    public List<CourseSession> getAllCourseSessions();
 }

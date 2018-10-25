@@ -6,12 +6,18 @@
 package com.lo54.projet.service.interf;
 
 import com.lo54.projet.dao.data.Client;
+import com.lo54.projet.service.data.Formation;
+import java.util.List;
 
 /**
  *
  * @author Florian
  */
-public interface ClientService {
+public interface SearchFormationsService {
 
-    public void newClient(Client client);
+    public List<Formation> buildFormationsList();
+
+    public List<String> getAllCitiesNames();
+
+    public void createClient(Client client);
 }

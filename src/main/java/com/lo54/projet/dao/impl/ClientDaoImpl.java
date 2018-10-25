@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
@@ -44,7 +45,22 @@ public class ClientDaoImpl implements ClientDao {
     @Override
     @Transactional
     public List<Client> getAllClients() {
-        Query query = entityManager.createQuery("SELECT c FROM Client c");
+        String sQuery = "SELECT c FROM Client c";
+        TypedQuery<Client> query = entityManager.createQuery(sQuery, Client.class);
+
+        try {
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public List<Client> getClientsForSessionId(int courseSessionId) {
+        String sQuery = "SELECT c FROM Client c WHERE c.courseSessionId = :courseSessionId";
+        TypedQuery<Client> query = entityManager.createQuery(sQuery, Client.class);
+        query.setParameter("courseSessionId", courseSessionId);
 
         try {
             return query.getResultList();

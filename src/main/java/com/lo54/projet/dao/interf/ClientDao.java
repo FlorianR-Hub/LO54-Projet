@@ -19,4 +19,6 @@ public interface ClientDao {
     public void delete(String firstName, String lastName);
 
     public List<Client> getAllClients();
+
+    public List<Client> getClientsForSessionId(int id);
 }

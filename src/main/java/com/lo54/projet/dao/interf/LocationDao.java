@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lo54.projet.service.interf;
+package com.lo54.projet.dao.interf;
 
-import com.lo54.projet.dao.data.Course;
+import java.util.List;
 
 /**
  *
  * @author Florian
  */
-public interface CourseService {
+public interface LocationDao {
 
-    public void newCourse(Course course);
+    public String getCityName(int id);
+
+    public List<String> getAllCitiesNames();
 }

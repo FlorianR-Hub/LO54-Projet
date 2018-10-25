@@ -9,10 +9,10 @@
 
     <h:form>
         <p:menu toggleable="true" class="menu">
-            <p:menuitem value="Accueil" url="/pages/accueil.xhtml" styleClass="#{view.viewId.contains('accueil') ? 'active' : ''}"/>
-            <p:submenu label="Gestion des formations">
-                <p:menuitem value="Chercher des formations" url="/pages/searchFormations.xhtml" styleClass="#{view.viewId.contains('searchFormations') ? 'active' : ''}"/>
-                <p:menuitem value="Créer une nouvelle formation" url="/pages/createFormation.xhtml" styleClass="#{view.viewId.contains('createFormation') ? 'active' : ''}"/>
+            <p:menuitem value="Home" url="/pages/accueil.xhtml" styleClass="#{view.viewId.contains('accueil') ? 'active' : ''}"/>
+            <p:submenu label="Formations">
+                <p:menuitem value="Search formations" url="/pages/searchFormations.xhtml" styleClass="#{view.viewId.contains('searchFormations') ? 'active' : ''}"/>
+                <p:menuitem value="Create new formation" url="/pages/createFormation.xhtml" styleClass="#{view.viewId.contains('createFormation') ? 'active' : ''}"/>
             </p:submenu>
         </p:menu>
     </h:form>

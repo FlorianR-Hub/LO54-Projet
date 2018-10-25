@@ -17,4 +17,8 @@ public interface CourseDao {
     public void create(Course course);
 
     public List<Course> getCourseByKeyword(String key);
+
+    public List<Course> getAllCourses();
+
+    public String getCourseTitle(String code);
 }

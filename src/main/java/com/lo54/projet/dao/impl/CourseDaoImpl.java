@@ -45,4 +45,31 @@ public class CourseDaoImpl implements CourseDao {
         }
     }
 
+    @Override
+    @Transactional
+    public List<Course> getAllCourses() {
+        String sQuery = "SELECT c FROM Course c";
+        TypedQuery<Course> query = entityManager.createQuery(sQuery, Course.class);
+
+        try {
+            return query.getResultList();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    @Override
+    @Transactional
+    public String getCourseTitle(String code) {
+        String sQuery = "SELECT c.title FROM Course c WHERE c.code = :code";
+        TypedQuery<String> query = entityManager.createQuery(sQuery, String.class);
+        query.setParameter("code", code);
+
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }

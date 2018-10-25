@@ -1,10 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml">
+                template="/template/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        Page pour chercher des formations
+
+        <f:event type="preRenderView" listener="#{searchFormationsView.initView()}" />
+        <h:outputStylesheet library="css" name="searchFormations.css" />
+
+        <h:form id="form" prependId="false">
+            <p:accordionPanel id="accordion" prependId="false">
+                <p:tab title="Recherche de formations" rendered="true">
+                    <p:dataTable id="formationDT" var="listFormations" value="#{searchFormationsModel.listFormations}" sortBy="#{listFormations.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
+                                 emptyMessage="No matching result" filteredValue="#{searchFormationsModel.filteredFormations}" selectionMode="single" selection="#{searchFormationsModel.selectedFormation}"
+                                 rowKey="#{listFormations.courseSessionId}">
+
+                        <f:facet name="header">
+                            <p:outputPanel style="text-align:left;">
+                                <h:outputText value="Search:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('formationTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <p:headerRow>
+                            <p:column colspan="5">
+                                <h:outputText value="#{listFormations.courseCode} : #{listFormations.title} " />
+                            </p:column>
+                        </p:headerRow>
+
+                        <p:column filterBy="#{listFormations.title}" rendered="false"/>
+                        <p:column filterBy="#{listFormations.courseCode}" rendered="false"/>
+
+                        <p:column filterBy="#{listFormations.startDate}" headerText="Start date">
+                            <h:outputText value="#{listFormations.startDate}" />
+                        </p:column>
+                        <p:column filterBy="#{listFormations.endDate}" headerText="End date">
+                            <h:outputText value="#{listFormations.endDate}" />
+                        </p:column>
+                        <p:column filterBy="#{listFormations.city}" headerText="City" filterMatchMode="exact">
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('formationTable').filter()" >
+                                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{searchFormationsModel.cities}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                            <h:outputText value="#{listFormations.city}" />
+                        </p:column>
+                        <p:column filterBy="#{listFormations.maxClients}" headerText="Max clients">
+                            <h:outputText value="#{listFormations.maxClients}" />
+                        </p:column>
+                        <p:column filterBy="#{listFormations.courseSessionId}" headerText="Course session Id">
+                            <h:outputText value="#{listFormations.courseSessionId}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton process="formationDT" update="clientsDetails" icon="ui-icon-search" value="View" oncomplete="PF('clientDialog').show()"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:tab>
+            </p:accordionPanel>
+
+            <p:dialog header="Formation Clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog" >
+                <p:outputPanel id="clientsDetails" style="text-align:left;">
+                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchFormationsModel.selectedFormation.listClients}">
+                        <p:column headerText="First Name">
+                            <h:outputText value="#{clients.firstName}" />
+                        </p:column>
+                        <p:column headerText="Last Name">
+                            <h:outputText value="#{clients.lastName}" />
+                        </p:column>
+                        <p:column headerText="Adresse">
+                            <h:outputText value="#{clients.adresse}" />
+                        </p:column>
+                        <p:column headerText="Phone">
+                            <h:outputText value="#{clients.phone}" />
+                        </p:column>
+                        <p:column headerText="Mail">
+                            <h:outputText value="#{clients.mail}" />
+                        </p:column>
+                        <p:column headerText="Course Session Id">
+                            <h:outputText value="#{clients.courseSessionId}" />
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:panelGrid columns="2">
+                        <h:outputLabel for="firstName" value="First Name: " />
+                        <p:inputText id="firstName"  value="#{searchFormationsModel.newClient.firstName}"/>
+
+                        <h:outputLabel for="lastName" value="Last Name: " />
+                        <p:inputText id="lastName"  value="#{searchFormationsModel.newClient.lastName}"/>
+
+                        <h:outputLabel for="adresse" value="Adresse: " />
+                        <p:inputText id="adresse"  value="#{searchFormationsModel.newClient.adresse}"/>
+
+                        <h:outputLabel for="phone" value="Phone: " />
+                        <p:inputText id="phone"  value="#{searchFormationsModel.newClient.phone}"/>
+
+                        <h:outputLabel for="mail" value="Mail: " />
+                        <p:inputText id="mail"  value="#{searchFormationsModel.newClient.mail}"/>
+
+                        <f:facet name="footer">
+                            <h:commandButton value="Register" action="#{searchFormationsView.addNew}">
+                                <f:setPropertyActionListener target="#{searchFormationsModel.newClient.courseSessionId}" value="#{searchFormationsModel.selectedFormation.courseSessionId}"/>
+                            </h:commandButton>
+                        </f:facet>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
     </ui:define>
 
 </ui:composition>
