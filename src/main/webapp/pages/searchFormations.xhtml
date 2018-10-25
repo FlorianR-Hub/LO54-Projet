@@ -13,7 +13,7 @@
 
         <h:form id="form" prependId="false">
             <p:accordionPanel id="accordion" prependId="false">
-                <p:tab title="Recherche de formations" rendered="true">
+                <p:tab title="Search Courses" rendered="true">
                     <p:dataTable id="formationDT" var="listFormations" value="#{searchFormationsModel.listFormations}" sortBy="#{listFormations.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
                                  emptyMessage="No matching result" filteredValue="#{searchFormationsModel.filteredFormations}" selectionMode="single" selection="#{searchFormationsModel.selectedFormation}"
                                  rowKey="#{listFormations.courseSessionId}">
@@ -26,7 +26,7 @@
                         </f:facet>
 
                         <p:headerRow>
-                            <p:column colspan="5">
+                            <p:column colspan="4">
                                 <h:outputText value="#{listFormations.courseCode} : #{listFormations.title} " />
                             </p:column>
                         </p:headerRow>
@@ -52,9 +52,6 @@
                         <p:column filterBy="#{listFormations.maxClients}" headerText="Max clients">
                             <h:outputText value="#{listFormations.maxClients}" />
                         </p:column>
-                        <p:column filterBy="#{listFormations.courseSessionId}" headerText="Course session Id">
-                            <h:outputText value="#{listFormations.courseSessionId}" />
-                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton process="formationDT" update="clientsDetails" icon="ui-icon-search" value="View" oncomplete="PF('clientDialog').show()"/>
                         </f:facet>
@@ -62,13 +59,13 @@
                 </p:tab>
             </p:accordionPanel>
 
-            <p:dialog header="Formation Clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog" >
+            <p:dialog header="Course clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog" >
                 <p:outputPanel id="clientsDetails" style="text-align:left;">
                     <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchFormationsModel.selectedFormation.listClients}">
-                        <p:column headerText="First Name">
+                        <p:column headerText="First name">
                             <h:outputText value="#{clients.firstName}" />
                         </p:column>
-                        <p:column headerText="Last Name">
+                        <p:column headerText="Last name">
                             <h:outputText value="#{clients.lastName}" />
                         </p:column>
                         <p:column headerText="Adresse">
@@ -80,16 +77,13 @@
                         <p:column headerText="Mail">
                             <h:outputText value="#{clients.mail}" />
                         </p:column>
-                        <p:column headerText="Course Session Id">
-                            <h:outputText value="#{clients.courseSessionId}" />
-                        </p:column>
                     </p:dataTable>
 
                     <p:panelGrid columns="2">
-                        <h:outputLabel for="firstName" value="First Name: " />
+                        <h:outputLabel for="firstName" value="First name: " />
                         <p:inputText id="firstName"  value="#{searchFormationsModel.newClient.firstName}"/>
 
-                        <h:outputLabel for="lastName" value="Last Name: " />
+                        <h:outputLabel for="lastName" value="Last name: " />
                         <p:inputText id="lastName"  value="#{searchFormationsModel.newClient.lastName}"/>
 
                         <h:outputLabel for="adresse" value="Adresse: " />
