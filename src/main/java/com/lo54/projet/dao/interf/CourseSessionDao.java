@@ -6,6 +6,7 @@
 package com.lo54.projet.dao.interf;
 
 import com.lo54.projet.dao.data.CourseSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface CourseSessionDao {
 
-    public List<CourseSession> getCourseSessionsFilteredByDate(String date);
+    public List<CourseSession> getCourseSessionsFilteredByDate(Date date);
 
     public List<CourseSession> getCourseSessionsFilteredByCity(String city);
 

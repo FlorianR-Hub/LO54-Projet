@@ -6,12 +6,14 @@
 package com.lo54.projet.dao.data;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,9 +28,11 @@ public class CourseSession implements Serializable {
     @Column(name = "ID")
     private int id;
     @Column(name = "START_DATE")
-    private String startDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "END_DATE")
-    private String endDate;
+    private Date endDate;
     @Column(name = "MAX_CLIENTS")
     private int maxClients;
     @Column(name = "COURSE_CODE")
@@ -44,11 +48,11 @@ public class CourseSession implements Serializable {
         return id;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
@@ -68,11 +72,11 @@ public class CourseSession implements Serializable {
         this.id = id;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -88,7 +92,7 @@ public class CourseSession implements Serializable {
         this.locationId = locationId;
     }
 
-    public CourseSession(String startDate, String endDate, int maxClients, String courseCode, int locationId) {
+    public CourseSession(Date startDate, Date endDate, int maxClients, String courseCode, int locationId) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.maxClients = maxClients;

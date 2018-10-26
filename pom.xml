@@ -11,10 +11,10 @@
 
     <repositories>
         <repository>
-            <url>http://repository.primefaces.org/</url>
-            <id>PrimeFaces-maven-lib</id>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
             <layout>default</layout>
-            <name>Repository for library PrimeFaces-maven-lib</name>
         </repository>
     </repositories>
 

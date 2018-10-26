@@ -7,6 +7,9 @@ package com.lo54.projet.dao.impl;
 
 import com.lo54.projet.dao.data.CourseSession;
 import com.lo54.projet.dao.interf.CourseSessionDao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +29,11 @@ public class CourseSessionDaoImplTest {
     private CourseSessionDao courseSessionDao;
 
     @Test
-    public void testGetCourseSessionsFilteredByDate() {
-        List<CourseSession> listCourseSessions = courseSessionDao.getCourseSessionsFilteredByDate("2018-11-20");
+    public void testGetCourseSessionsFilteredByDate() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse("2018-11-20");
+
+        List<CourseSession> listCourseSessions = courseSessionDao.getCourseSessionsFilteredByDate(date);
 
         for (CourseSession cs : listCourseSessions) {
             System.out.println(cs.toString());

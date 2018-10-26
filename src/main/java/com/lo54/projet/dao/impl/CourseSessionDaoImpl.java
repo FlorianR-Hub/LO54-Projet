@@ -7,6 +7,7 @@ package com.lo54.projet.dao.impl;
 
 import com.lo54.projet.dao.data.CourseSession;
 import com.lo54.projet.dao.interf.CourseSessionDao;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -27,7 +28,7 @@ public class CourseSessionDaoImpl implements CourseSessionDao {
 
     @Override
     @Transactional
-    public List<CourseSession> getCourseSessionsFilteredByDate(String date) {
+    public List<CourseSession> getCourseSessionsFilteredByDate(Date date) {
         String sQuery = "SELECT cs FROM CourseSession cs WHERE :date BETWEEN cs.startDate AND cs.endDate";
         TypedQuery<CourseSession> query = entityManager.createQuery(sQuery, CourseSession.class);
         query.setParameter("date", date);
