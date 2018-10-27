@@ -38,7 +38,7 @@
 
                         <p:column filterBy="#{listFormations.startDate}" headerText="Start date" filterFunction="#{searchFormationsView.filterByDate}">
                             <f:facet name="filter">
-                                <p:calendar  pattern="yyyy-MM-dd">
+                                <p:calendar  pattern="yyyy-MM-dd" showOn="button">
                                     <p:ajax event="dateSelect"  oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                     <p:ajax event="change" oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                 </p:calendar>
@@ -49,7 +49,7 @@
                         </p:column>
                         <p:column filterBy="#{listFormations.endDate}" headerText="End date" filterFunction="#{searchFormationsView.filterByDate}">
                             <f:facet name="filter">
-                                <p:calendar  pattern="yyyy-MM-dd">
+                                <p:calendar  pattern="yyyy-MM-dd" showOn="button">
                                     <p:ajax event="dateSelect"  oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                     <p:ajax event="change" oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                 </p:calendar>
