@@ -16,27 +16,12 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Florian
  */
 @Repository
 public class LocationDaoImpl implements LocationDao {
 
     @PersistenceContext(unitName = "Formation")
     private EntityManager entityManager;
-
-    @Override
-    @Transactional
-    public String getCityName(int id) {
-        String sQuery = "SELECT l.city FROM Location l WHERE l.id = :id";
-        TypedQuery<String> query = entityManager.createQuery(sQuery, String.class);
-        query.setParameter("id", id);
-
-        try {
-            return query.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
 
     @Override
     @Transactional

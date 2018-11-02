@@ -5,10 +5,6 @@
  */
 package com.lo54.projet.ihm.view;
 
-/**
- *
- * @author Florian
- */
 public abstract class GenericView {
 
     public abstract void initView();

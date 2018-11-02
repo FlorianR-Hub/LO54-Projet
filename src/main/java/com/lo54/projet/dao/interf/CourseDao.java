@@ -6,19 +6,17 @@
 package com.lo54.projet.dao.interf;
 
 import com.lo54.projet.dao.data.Course;
-import java.util.List;
 
 /**
- *
- * @author Florian
+ * DAO class for COURSE table.
  */
 public interface CourseDao {
 
+    /**
+     * Create a new Course in COURSE table.
+     *
+     * @param course the course to create.
+     */
     public void create(Course course);
 
-    public List<Course> getCourseByKeyword(String key);
-
-    public List<Course> getAllCourses();
-
-    public String getCourseTitle(String code);
 }

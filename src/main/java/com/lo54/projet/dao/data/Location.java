@@ -13,10 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author kaled
- */
 @Entity
 @Table(name = "LOCATION")
 public class Location implements Serializable {
@@ -25,15 +21,16 @@ public class Location implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id; // will be generated automaticly when we add new city to the database
+
     @Column(name = "CITY")
     private String city;
 
-    public Location() {
-
-    }
-
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCity() {
@@ -41,10 +38,6 @@ public class Location implements Serializable {
     }
 
     public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Location(String city) {
         this.city = city;
     }
 

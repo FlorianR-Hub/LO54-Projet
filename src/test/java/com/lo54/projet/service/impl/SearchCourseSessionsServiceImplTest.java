@@ -10,6 +10,7 @@ import com.lo54.projet.dao.interf.ClientDao;
 import com.lo54.projet.dao.interf.CourseDao;
 import com.lo54.projet.dao.interf.CourseSessionDao;
 import com.lo54.projet.dao.interf.LocationDao;
+import com.lo54.projet.service.data.ClientIhm;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
@@ -20,10 +21,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 /**
- *
- * @author Florian
+ * Test class of SearchCourseSessionsServiceImpl.
  */
-public class SearchFormationsServiceImplTest {
+public class SearchCourseSessionsServiceImplTest {
 
     @Mock
     private CourseDao courseDao;
@@ -38,7 +38,7 @@ public class SearchFormationsServiceImplTest {
     private LocationDao locationDao;
 
     @InjectMocks
-    private SearchFormationsServiceImpl searchFormationsService;
+    private SearchCourseSessionsServiceImpl searchCourseSessionsService;
 
     @Before
     public void init() {
@@ -59,15 +59,15 @@ public class SearchFormationsServiceImplTest {
 
         Mockito.when(locationDao.getAllCitiesNames()).thenReturn(listCitiesNames);
 
-        searchFormationsService.getAllCitiesNames();
+        searchCourseSessionsService.getAllCitiesNames();
     }
 
     @Test
     public void testCreateClient() {
-        Client client = new Client();
-        Mockito.doNothing().when(clientDao).create(client);
+        Mockito.doNothing().when(clientDao).create(new Client());
 
-        searchFormationsService.createClient(client);
+        ClientIhm client = new ClientIhm();
+        searchCourseSessionsService.createClient(client);
     }
 
 }

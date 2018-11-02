@@ -5,8 +5,7 @@
  */
 package com.lo54.projet.ihm.view;
 
-import com.lo54.projet.ihm.controller.SearchFormationsController;
-import com.lo54.projet.ihm.model.SearchFormationsModel;
+import com.lo54.projet.ihm.controller.SearchCourseSessionsController;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -17,19 +16,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
- * @author Florian
+ * View class for the course sessions search page.
  */
-@Component("searchFormationsView")
+@Component("searchCourseSessionsView")
 @Scope("session")
-public class SearchFormationsView extends GenericView {
+public class SearchCourseSessionsView extends GenericView {
 
     @Autowired
-    private SearchFormationsController searchFormationsController;
+    private SearchCourseSessionsController searchCourseSessionsController;
 
-    @Autowired
-    private SearchFormationsModel searchFormationsModel;
-
+    /**
+     * Initialize the view.
+     */
     @Override
     public void initView() {
         // La méthode initView() est appelée pour chaque appel AJAX.
@@ -38,14 +36,23 @@ public class SearchFormationsView extends GenericView {
             return;
         }
 
-        searchFormationsController.initModel();
+        searchCourseSessionsController.initModel();
     }
 
-    // TODO : l'inscription d'un nouveau client ne fonctionne pas
+    /**
+     *
+     */
     public void addNew() {
-        searchFormationsController.register();
+        searchCourseSessionsController.register();
     }
 
+    /**
+     *
+     * @param value
+     * @param filter
+     * @param locale
+     * @return
+     */
     public boolean filterByDate(Object value, Object filter, Locale locale) {
 
         if (filter == null) {
@@ -59,7 +66,23 @@ public class SearchFormationsView extends GenericView {
         return DateUtils.truncatedEquals((Date) filter, (Date) value, Calendar.DATE);
     }
 
+    /**
+     *
+     * @param nbClients
+     * @param maxClients
+     * @return
+     */
     public float getFillingPercentage(int nbClients, int maxClients) {
         return (float) nbClients / maxClients * 100;
     }
+
+    /**
+     *
+     * @param number
+     * @return
+     */
+    public String toString(int number) {
+        return Integer.toString(number);
+    }
+
 }

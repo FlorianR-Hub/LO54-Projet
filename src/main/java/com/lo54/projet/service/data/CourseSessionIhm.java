@@ -9,11 +9,7 @@ import com.lo54.projet.dao.data.Client;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Florian
- */
-public class Formation {
+public class CourseSessionIhm {
 
     private int courseSessionId;
 

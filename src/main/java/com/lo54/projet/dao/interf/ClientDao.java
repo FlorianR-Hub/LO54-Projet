@@ -6,19 +6,17 @@
 package com.lo54.projet.dao.interf;
 
 import com.lo54.projet.dao.data.Client;
-import java.util.List;
 
 /**
- *
- * @author Florian
+ * DAO class for CLIENT table.
  */
 public interface ClientDao {
 
+    /**
+     * Create a new client in CLIENT table.
+     *
+     * @param client the client to create.
+     */
     public void create(Client client);
 
-    public void delete(String firstName, String lastName);
-
-    public List<Client> getAllClients();
-
-    public List<Client> getClientsForSessionId(int id);
 }

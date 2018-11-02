@@ -5,10 +5,6 @@
  */
 package com.lo54.projet.ihm.controller;
 
-/**
- *
- * @author Florian
- */
 public abstract class GenericController {
 
     public abstract void initModel();

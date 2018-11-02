@@ -7,17 +7,13 @@ package com.lo54.projet.dao.impl;
 
 import com.lo54.projet.dao.data.Course;
 import com.lo54.projet.dao.interf.CourseDao;
-import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Florian
  */
 @Repository
 public class CourseDaoImpl implements CourseDao {
@@ -29,47 +25,6 @@ public class CourseDaoImpl implements CourseDao {
     @Transactional
     public void create(Course course) {
         entityManager.persist(course);
-    }
-
-    @Override
-    @Transactional
-    public List<Course> getCourseByKeyword(String key) {
-        String sQuery = "SELECT c FROM Course c WHERE c.title LIKE :key OR c.code LIKE :key";
-        TypedQuery<Course> query = entityManager.createQuery(sQuery, Course.class);
-        query.setParameter("key", "%" + key + "%");
-
-        try {
-            return query.getResultList();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
-    @Override
-    @Transactional
-    public List<Course> getAllCourses() {
-        String sQuery = "SELECT c FROM Course c";
-        TypedQuery<Course> query = entityManager.createQuery(sQuery, Course.class);
-
-        try {
-            return query.getResultList();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
-
-    @Override
-    @Transactional
-    public String getCourseTitle(String code) {
-        String sQuery = "SELECT c.title FROM Course c WHERE c.code = :code";
-        TypedQuery<String> query = entityManager.createQuery(sQuery, String.class);
-        query.setParameter("code", code);
-
-        try {
-            return query.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
     }
 
 }

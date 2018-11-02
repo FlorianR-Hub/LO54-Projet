@@ -8,20 +8,20 @@
 
     <ui:define name="content">
 
-        <f:event type="preRenderView" listener="#{searchFormationsView.initView()}" />
+        <f:event type="preRenderView" listener="#{searchCourseSessionsView.initView()}" />
         <h:outputStylesheet library="css" name="searchFormations.css" />
 
-        <h:form id="form" prependId="false">
+        <h:form id="form1" prependId="false">
             <p:accordionPanel id="accordion" prependId="false">
                 <p:tab title="Search courses" rendered="true">
-                    <p:dataTable id="formationDT" var="listFormations" value="#{searchFormationsModel.listFormations}" sortBy="#{listFormations.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
-                                 emptyMessage="No matching result" filteredValue="#{searchFormationsModel.filteredFormations}" selectionMode="single" selection="#{searchFormationsModel.selectedFormation}"
-                                 rowKey="#{listFormations.courseSessionId}">
+                    <p:dataTable id="formationDT" var="listCourseSessions" value="#{searchCourseSessionsModel.listCourseSessions}" sortBy="#{listCourseSessions.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
+                                 emptyMessage="No matching result" filteredValue="#{searchCourseSessionsModel.filteredCourseSessions}" selectionMode="single" selection="#{searchCourseSessionsModel.selectedCourseSession}"
+                                 rowKey="#{listCourseSessions.courseSessionId}">
 
                         <f:facet name="header">
-                            <p:outputPanel style="text-align:left;">
+                            <p:outputPanel styleClass="formationDTHeader">
                                 <h:outputText value="Search:" />
-                                <p:inputText id="globalFilter" onkeyup="PF('formationTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                                <p:inputText id="globalFilter" onkeyup="PF('formationTable').filter()" placeholder="Enter keyword"/>
                             </p:outputPanel>
                         </f:facet>
 
@@ -29,62 +29,71 @@
 
                         <p:headerRow>
                             <p:column colspan="4">
-                                <h:outputText value="#{listFormations.courseCode} : #{listFormations.title} " />
+                                <h:outputText value="#{listCourseSessions.courseCode} : #{listCourseSessions.title} " />
                             </p:column>
                         </p:headerRow>
 
-                        <p:column filterBy="#{listFormations.title}" rendered="false"/>
-                        <p:column filterBy="#{listFormations.courseCode}" rendered="false"/>
+                        <p:column filterBy="#{listCourseSessions.title}" rendered="false"/>
+                        <p:column filterBy="#{listCourseSessions.courseCode}" rendered="false"/>
 
-                        <p:column filterBy="#{listFormations.startDate}" headerText="Start date" filterFunction="#{searchFormationsView.filterByDate}">
+                        <p:column filterBy="#{listCourseSessions.startDate}" headerText="Start date" filterFunction="#{searchCourseSessionsView.filterByDate}">
                             <f:facet name="filter">
                                 <p:calendar  pattern="yyyy-MM-dd" showOn="button">
                                     <p:ajax event="dateSelect"  oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                     <p:ajax event="change" oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                 </p:calendar>
                             </f:facet>
-                            <h:outputText value="#{listFormations.startDate}">
+                            <h:outputText value="#{listCourseSessions.startDate}">
                                 <f:convertDateTime pattern="yyyy-MM-dd" />
                             </h:outputText>
                         </p:column>
-                        <p:column filterBy="#{listFormations.endDate}" headerText="End date" filterFunction="#{searchFormationsView.filterByDate}">
+                        <p:column filterBy="#{listCourseSessions.endDate}" headerText="End date" filterFunction="#{searchCourseSessionsView.filterByDate}">
                             <f:facet name="filter">
                                 <p:calendar  pattern="yyyy-MM-dd" showOn="button">
                                     <p:ajax event="dateSelect"  oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                     <p:ajax event="change" oncomplete="PF('formationTable').filter()" update="formationDT"/>
                                 </p:calendar>
                             </f:facet>
-                            <h:outputText value="#{listFormations.endDate}">
+                            <h:outputText value="#{listCourseSessions.endDate}">
                                 <f:convertDateTime pattern="yyyy-MM-dd" />
                             </h:outputText>
                         </p:column>
-                        <p:column filterBy="#{listFormations.city}" headerText="City" filterMatchMode="exact">
+                        <p:column filterBy="#{listCourseSessions.city}" headerText="City" filterMatchMode="exact">
                             <f:facet name="filter">
                                 <p:selectOneMenu onchange="PF('formationTable').filter()" >
                                     <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
-                                    <f:selectItems value="#{searchFormationsModel.cities}" />
+                                    <f:selectItems value="#{searchCourseSessionsModel.cities}" />
                                 </p:selectOneMenu>
                             </f:facet>
-                            <h:outputText value="#{listFormations.city}"/>
+                            <h:outputText value="#{listCourseSessions.city}"/>
                         </p:column>
-                        <p:column filterBy="#{searchFormationsView.getFillingPercentage(listFormations.listClients.size(), listFormations.maxClients)}" headerText="Filling percentage">
-                            <p:progressBar value="#{searchFormationsView.getFillingPercentage(listFormations.listClients.size(), listFormations.maxClients)}" labelTemplate="{value}%" displayOnly="true"/>
+                        <p:column filterBy="#{searchCourseSessionsView.getFillingPercentage(listCourseSessions.listClients.size(), listCourseSessions.maxClients)}" headerText="Filling percentage">
+                            <p:progressBar value="#{searchCourseSessionsView.getFillingPercentage(listCourseSessions.listClients.size(), listCourseSessions.maxClients)}"
+                                           labelTemplate="{value}% (#{listCourseSessions.listClients.size()}/#{listCourseSessions.maxClients})" displayOnly="true"/>
                         </p:column>
                     </p:dataTable>
                 </p:tab>
             </p:accordionPanel>
+        </h:form>
 
-            <p:dialog header="Course clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog">
-                <p:outputPanel id="clientsDetails" style="text-align:left;">
-                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchFormationsModel.selectedFormation.listClients}">
+        <p:dialog id="dialog" header="Course session clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog">
+            <p:outputPanel id="clientsDetails">
+                <h:form id="form2" prependId="false">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="#{searchCourseSessionsModel.selectedCourseSession.courseCode} : #{searchCourseSessionsModel.selectedCourseSession.title}"/>
+                        <p:progressBar styleClass="progressBarClientsDetails" value="#{searchCourseSessionsView.getFillingPercentage(searchCourseSessionsModel.selectedCourseSession.listClients.size(), searchCourseSessionsModel.selectedCourseSession.maxClients)}"
+                                       labelTemplate="{value}% (#{searchCourseSessionsModel.selectedCourseSession.listClients.size()}/#{searchCourseSessionsModel.selectedCourseSession.maxClients})" displayOnly="true"/>
+                    </h:panelGrid>
+
+                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchCourseSessionsModel.selectedCourseSession.listClients}" styleClass="clientsDT">
                         <p:column headerText="First name">
                             <h:outputText value="#{clients.firstName}" />
                         </p:column>
                         <p:column headerText="Last name">
                             <h:outputText value="#{clients.lastName}" />
                         </p:column>
-                        <p:column headerText="Adresse">
-                            <h:outputText value="#{clients.adresse}" />
+                        <p:column headerText="Address">
+                            <h:outputText value="#{clients.address}" />
                         </p:column>
                         <p:column headerText="Phone">
                             <h:outputText value="#{clients.phone}" />
@@ -94,32 +103,41 @@
                         </p:column>
                     </p:dataTable>
 
-                    <p:panelGrid columns="2">
-                        <h:outputLabel for="firstName" value="First name: " />
-                        <p:inputText id="firstName"  value="#{searchFormationsModel.newClient.firstName}"/>
 
-                        <h:outputLabel for="lastName" value="Last name: " />
-                        <p:inputText id="lastName"  value="#{searchFormationsModel.newClient.lastName}"/>
+                    <p:panel id="panel" header="Registration Form" styleClass="registerPanel">
+                        <p:messages id="messages" />
+                        <h:panelGrid columns="3" cellpadding="5">
+                            <p:outputLabel for="firstName" value="First name :" />
+                            <p:inputText id="firstName" value="#{searchCourseSessionsModel.newClient.firstName}" required="true">
+                                <f:validateLength minimum="2" />
+                            </p:inputText>
+                            <p:message for="firstName"/>
 
-                        <h:outputLabel for="adresse" value="Adresse: " />
-                        <p:inputText id="adresse"  value="#{searchFormationsModel.newClient.adresse}"/>
+                            <p:outputLabel for="lastName" value="Last name :" />
+                            <p:inputText id="lastName" value="#{searchCourseSessionsModel.newClient.lastName}" required="true"/>
+                            <p:message for="lastName" />
 
-                        <h:outputLabel for="phone" value="Phone: " />
-                        <p:inputText id="phone"  value="#{searchFormationsModel.newClient.phone}"/>
+                            <p:outputLabel for="address" value="Address : " />
+                            <p:inputText id="address"  value="#{searchCourseSessionsModel.newClient.address}" required="true"/>
+                            <p:message for="address" />
 
-                        <h:outputLabel for="mail" value="Mail: " />
-                        <p:inputText id="mail"  value="#{searchFormationsModel.newClient.mail}"/>
+                            <p:outputLabel for="phone" value="Phone : " />
+                            <p:inputText id="phone"  value="#{searchCourseSessionsModel.newClient.phone}" required="true"/>
+                            <p:message for="phone" />
 
-                        <f:facet name="footer">
-                            <h:commandButton value="Register" action="#{searchFormationsView.addNew}">
-                                <f:setPropertyActionListener target="#{searchFormationsModel.newClient.courseSessionId}" value="#{searchFormationsModel.selectedFormation.courseSessionId}"/>
-                            </h:commandButton>
-                        </f:facet>
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
+                            <p:outputLabel for="mail" value="Mail : " />
+                            <p:inputText id="mail"  value="#{searchCourseSessionsModel.newClient.mail}" required="true"/>
+                            <p:message for="mail" />
+                        </h:panelGrid>
+                    </p:panel>
 
-        </h:form>
+                    <p:commandButton styleClass="registerButton" value="Register" update="form1 form2" action="#{searchCourseSessionsView.addNew()}">
+                        <f:setPropertyActionListener target="#{searchCourseSessionsModel.newClient.courseSession.id}" value="#{searchCourseSessionsModel.selectedCourseSession.courseSessionId}"/>
+                    </p:commandButton>
+                </h:form>
+            </p:outputPanel>
+
+        </p:dialog>
     </ui:define>
 
 </ui:composition>

@@ -3,52 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lo54.projet.dao.data;
+package com.lo54.projet.service.data;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import com.lo54.projet.dao.data.CourseSession;
 
-@Entity
-@Table(name = "CLIENT")
-public class Client implements Serializable {
+public class ClientIhm {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private int id;
-
-    @Column(name = "LASTNAME")
     private String lastName;
 
-    @Column(name = "FIRSTNAME")
     private String firstName;
 
-    @Column(name = "ADRESSE")
     private String address;
 
-    @Column(name = "PHONE")
     private String phone;
 
-    @Column(name = "MAIL")
     private String mail;
 
-    @OneToOne
-    @JoinColumn(name = "COURSE_SESSION_ID")
     private CourseSession courseSession;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public ClientIhm() {
+        courseSession = new CourseSession();
     }
 
     public String getLastName() {
@@ -101,7 +75,7 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "Client{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", address=" + address + ", phone=" + phone + ", mail=" + mail + ", courseSession=" + courseSession + '}';
+        return "ClientIhm{" + "lastName=" + lastName + ", firstName=" + firstName + ", address=" + address + ", phone=" + phone + ", mail=" + mail + ", courseSession=" + courseSession + '}';
     }
 
 }

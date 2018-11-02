@@ -1,3 +1,23 @@
+.formationDTHeader {
+    text-align:left;
+}
+
 .dialog {
     width: 80% !important;
+}
+
+.clientsDT {
+    margin-top: 20px;
+}
+
+.registerPanel {
+    margin-top: 30px;
+}
+
+.registerButton {
+    margin-top: 10px;
+}
+
+.progressBarClientsDetails {
+    width: 250px;
 }
