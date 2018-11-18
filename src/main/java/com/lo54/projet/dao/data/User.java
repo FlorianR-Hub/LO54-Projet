@@ -11,20 +11,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author kaled
- */
 @Entity
-@Table(name = "USER")
-public class User implements Serializable{
+@Table(name = "USER_AUTH")
+public class User implements Serializable {
+
     @Id
     @Column(name = "USERNAME")
     private String userName;
-    
+
     @Column(name = "PASSWORD")
     private String password;
-    
+
     @Column(name = "ADMIN")
     private boolean admin;
 
@@ -54,19 +51,16 @@ public class User implements Serializable{
     }
 
     public void setUserName(String userName) {
-        this.userName= userName;
+        this.userName = userName;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-   @Override
+    @Override
     public String toString() {
         return "User{" + "userName=" + userName + ", password=" + password + ", admin=" + admin + '}';
     }
-    
-    
-    
-    
+
 }

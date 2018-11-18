@@ -42,7 +42,7 @@ public class SearchCourseSessionsView extends GenericView {
     /**
      *
      */
-    public void addNew() {
+    public void onRegister() {
         searchCourseSessionsController.register();
     }
 
@@ -74,15 +74,6 @@ public class SearchCourseSessionsView extends GenericView {
      */
     public float getFillingPercentage(int nbClients, int maxClients) {
         return (float) nbClients / maxClients * 100;
-    }
-
-    /**
-     *
-     * @param number
-     * @return
-     */
-    public String toString(int number) {
-        return Integer.toString(number);
     }
 
 }

@@ -18,5 +18,5 @@ public interface CourseSessionDao {
      *
      * @return
      */
-    public List<CourseSession> getAllCourseSessions();
+    public List<CourseSession> getAllValidCourseSessions();
 }

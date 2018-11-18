@@ -40,6 +40,9 @@ public class SearchCourseSessionsController extends GenericController {
         searchCourseSessionsModel.setNewClient(new ClientIhm());
     }
 
+    /**
+     *
+     */
     public void register() {
         ClientIhm clientIhm = searchCourseSessionsModel.getNewClient();
         int nbClients = searchCourseSessionsModel.getSelectedCourseSession().getListClients().size();

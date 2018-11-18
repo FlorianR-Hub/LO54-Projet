@@ -7,13 +7,13 @@
         <class>com.lo54.projet.dao.data.Course</class>
         <class>com.lo54.projet.dao.data.Client</class>
         <class>com.lo54.projet.dao.data.Location</class>
+        <class>com.lo54.projet.dao.data.User</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Formation"/>
             <property name="javax.persistence.jdbc.user" value="lo54"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.password" value="lo54"/>
-            <property name="javax.persistence.schema-generation.database.action" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

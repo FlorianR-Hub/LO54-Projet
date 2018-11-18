@@ -30,7 +30,7 @@ public class Client implements Serializable {
     @Column(name = "FIRSTNAME")
     private String firstName;
 
-    @Column(name = "ADRESSE")
+    @Column(name = "ADDRESS")
     private String address;
 
     @Column(name = "PHONE")

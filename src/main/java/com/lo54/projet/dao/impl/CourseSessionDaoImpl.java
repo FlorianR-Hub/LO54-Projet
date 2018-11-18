@@ -7,6 +7,7 @@ package com.lo54.projet.dao.impl;
 
 import com.lo54.projet.dao.data.CourseSession;
 import com.lo54.projet.dao.interf.CourseSessionDao;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -15,9 +16,6 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- */
 @Repository
 public class CourseSessionDaoImpl implements CourseSessionDao {
 
@@ -26,9 +24,12 @@ public class CourseSessionDaoImpl implements CourseSessionDao {
 
     @Override
     @Transactional
-    public List<CourseSession> getAllCourseSessions() {
-        String sQuery = "SELECT cs FROM CourseSession cs";
+    public List<CourseSession> getAllValidCourseSessions() {
+        Date today = new Date();
+
+        String sQuery = "SELECT cs FROM CourseSession cs WHERE cs.startDate > :today";
         TypedQuery<CourseSession> query = entityManager.createQuery(sQuery, CourseSession.class);
+        query.setParameter("today", today);
 
         try {
             return query.getResultList();

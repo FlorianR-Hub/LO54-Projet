@@ -33,7 +33,7 @@ public class SearchCourseSessionsServiceImpl implements SearchCourseSessionsServ
     @Override
     public List<CourseSessionIhm> buildCourseSessionsList() {
         List<CourseSessionIhm> listFormations = new ArrayList<>();
-        List<CourseSession> listCourseSessions = courseSessionDao.getAllCourseSessions();
+        List<CourseSession> listCourseSessions = courseSessionDao.getAllValidCourseSessions();
 
         for (CourseSession cs : listCourseSessions) {
             CourseSessionIhm courseSessionIhm = new CourseSessionIhm();

@@ -5,29 +5,29 @@
  */
 package com.lo54.projet.dao.impl;
 
-import com.lo54.projet.dao.interf.LocationDao;
-import java.util.List;
+import com.lo54.projet.dao.data.User;
+import com.lo54.projet.dao.interf.UserDao;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LocationDaoImpl implements LocationDao {
+public class UserDaoImpl implements UserDao {
 
     @PersistenceContext(unitName = "Formation")
     private EntityManager entityManager;
 
     @Override
-    @Transactional
-    public List<String> getAllCitiesNames() {
-        String sQuery = "SELECT l.city FROM Location l";
-        TypedQuery<String> query = entityManager.createQuery(sQuery, String.class);
+    public User getUserByUserNameAndPassword(String userName, String password) {
+        String sQuery = "SELECT u FROM User u WHERE u.userName = :username AND u.password = :password";
+        TypedQuery<User> query = entityManager.createQuery(sQuery, User.class);
+        query.setParameter("username", userName);
+        query.setParameter("password", password);
 
         try {
-            return query.getResultList();
+            return query.getSingleResult();
         } catch (NoResultException e) {
             return null;
         }

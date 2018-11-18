@@ -67,7 +67,7 @@
                             </f:facet>
                             <h:outputText value="#{listCourseSessions.city}"/>
                         </p:column>
-                        <p:column filterBy="#{searchCourseSessionsView.getFillingPercentage(listCourseSessions.listClients.size(), listCourseSessions.maxClients)}" headerText="Filling percentage">
+                        <p:column>
                             <p:progressBar value="#{searchCourseSessionsView.getFillingPercentage(listCourseSessions.listClients.size(), listCourseSessions.maxClients)}"
                                            labelTemplate="{value}% (#{listCourseSessions.listClients.size()}/#{listCourseSessions.maxClients})" displayOnly="true"/>
                         </p:column>
@@ -85,7 +85,7 @@
                                        labelTemplate="{value}% (#{searchCourseSessionsModel.selectedCourseSession.listClients.size()}/#{searchCourseSessionsModel.selectedCourseSession.maxClients})" displayOnly="true"/>
                     </h:panelGrid>
 
-                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchCourseSessionsModel.selectedCourseSession.listClients}" styleClass="clientsDT">
+                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchCourseSessionsModel.selectedCourseSession.listClients}" styleClass="clientsDT" rendered="#{homeModel.user.admin}">
                         <p:column headerText="First name">
                             <h:outputText value="#{clients.firstName}" />
                         </p:column>
@@ -126,12 +126,14 @@
                             <p:message for="phone" />
 
                             <p:outputLabel for="mail" value="Mail : " />
-                            <p:inputText id="mail"  value="#{searchCourseSessionsModel.newClient.mail}" required="true"/>
+                            <p:inputText id="mail"  value="#{searchCourseSessionsModel.newClient.mail}" required="true" validatorMessage="Invalid email format">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
                             <p:message for="mail" />
                         </h:panelGrid>
                     </p:panel>
 
-                    <p:commandButton styleClass="registerButton" value="Register" update="form1 form2" action="#{searchCourseSessionsView.addNew()}">
+                    <p:commandButton styleClass="registerButton" value="Register" update="form1 form2" action="#{searchCourseSessionsView.onRegister()}">
                         <f:setPropertyActionListener target="#{searchCourseSessionsModel.newClient.courseSession.id}" value="#{searchCourseSessionsModel.selectedCourseSession.courseSessionId}"/>
                     </p:commandButton>
                 </h:form>
