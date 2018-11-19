@@ -63,4 +63,11 @@ public class HomeController extends GenericController {
         FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/home.xhtml");
     }
 
+    /**
+     *
+     */
+    public void signIn() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/home.xhtml");
+    }
+
 }

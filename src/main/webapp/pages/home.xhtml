@@ -27,10 +27,9 @@
                 <h:graphicImage library="img" name="logo_primefaces.png" styleClass="image"/>
             </p:panelGrid>
 
-
             <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
 
-            <p:dialog header="Login" widgetVar="dlg" resizable="false" closable="false" draggable="false">
+            <p:dialog header="Login" widgetVar="dlg" resizable="false" draggable="false">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{homeModel.user.userName}" required="true" label="username" requiredMessage="Empty Username"/>

@@ -57,4 +57,11 @@ public class HomeView extends GenericView {
         homeController.signOut();
     }
 
+    /**
+     *
+     */
+    public void onSignIn() throws IOException {
+        homeController.signIn();
+    }
+
 }

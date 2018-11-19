@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/template.xhtml">
+                template="/template/template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
+        <p:panelGrid rendered="#{not homeModel.logged}">
+            Please sign in to see the content.
+        </p:panelGrid>
+
         Page to create course
     </ui:define>
 

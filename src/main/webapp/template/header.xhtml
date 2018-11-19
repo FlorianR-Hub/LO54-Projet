@@ -9,7 +9,8 @@
     <h:form id="headerForm" prependId="false">
         <h:panelGrid columns="2" styleClass="header">
             Projet LO54
-            <p:commandButton value="Sign out" action="#{homeView.onSignOut()}" rendered="#{homeModel.logged}" update="headerForm" styleClass="signOutButton" />
+            <p:commandButton value="Sign out" action="#{homeView.onSignOut()}" rendered="#{homeModel.logged}" update="headerForm" styleClass="button" />
+            <p:commandButton value="Sign in" action="#{homeView.onSignIn()}" rendered="#{not homeModel.logged}" update="headerForm" styleClass="button" />
         </h:panelGrid>
     </h:form>
 

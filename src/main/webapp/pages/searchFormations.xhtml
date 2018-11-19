@@ -12,7 +12,11 @@
         <h:outputStylesheet library="css" name="searchFormations.css" />
 
         <h:form id="form1" prependId="false">
-            <p:accordionPanel id="accordion" prependId="false">
+            <p:panelGrid rendered="#{not homeModel.logged}">
+                Please sign in to see the content.
+            </p:panelGrid>
+
+            <p:accordionPanel id="accordion" prependId="false" rendered="#{homeModel.logged}">
                 <p:tab title="Search courses" rendered="true">
                     <p:dataTable id="formationDT" var="listCourseSessions" value="#{searchCourseSessionsModel.listCourseSessions}" sortBy="#{listCourseSessions.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
                                  emptyMessage="No matching result" filteredValue="#{searchCourseSessionsModel.filteredCourseSessions}" selectionMode="single" selection="#{searchCourseSessionsModel.selectedCourseSession}"
