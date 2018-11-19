@@ -9,6 +9,7 @@
     <ui:define name="content">
 
         <f:event type="preRenderView" listener="#{homeView.initView()}" />
+        <h:outputStylesheet library="css" name="home.css" />
 
         <script type="text/javascript">
             function handleLoginRequest(xhr, status, args) {
@@ -22,6 +23,11 @@
         </script>
 
         <h:form>
+            <p:panelGrid styleClass="panelGrid">
+                <h:graphicImage library="img" name="logo_primefaces.png" styleClass="image"/>
+            </p:panelGrid>
+
+
             <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
 
             <p:dialog header="Login" widgetVar="dlg" resizable="false" closable="false" draggable="false">
