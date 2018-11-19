@@ -21,11 +21,10 @@
             }
         </script>
 
-
         <h:form>
-            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
 
-            <p:dialog header="Login" widgetVar="dlg" resizable="false" closable="false">
+            <p:dialog header="Login" widgetVar="dlg" resizable="false" closable="false" draggable="false">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Username:" />
                     <p:inputText id="username" value="#{homeModel.user.userName}" required="true" label="username" requiredMessage="Empty Username"/>
@@ -34,7 +33,7 @@
                     <p:password id="password" value="#{homeModel.user.password}" required="true" label="password" requiredMessage="Empty Password"/>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Login" update="@all" action="#{homeView.onLogin()}" oncomplete="handleLoginRequest(xhr, status, args)" />
+                        <p:commandButton value="Login" update="growl menuForm headerForm" action="#{homeView.onLogin()}" oncomplete="handleLoginRequest(xhr, status, args)" />
                     </f:facet>
                 </h:panelGrid>
             </p:dialog>

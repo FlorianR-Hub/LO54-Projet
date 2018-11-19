@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:outputStylesheet library="css" name="header.css" />
+
+    <h:form id="headerForm" prependId="false">
+        <h:panelGrid columns="2" styleClass="header">
+            Projet LO54
+            <p:commandButton value="Sign out" action="#{homeView.onSignOut()}" rendered="#{homeModel.logged}" update="headerForm" styleClass="signOutButton" />
+        </h:panelGrid>
+    </h:form>
+
+</ui:composition>
+

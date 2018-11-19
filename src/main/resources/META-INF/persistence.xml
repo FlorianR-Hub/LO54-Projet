@@ -7,7 +7,6 @@
         <class>com.lo54.projet.dao.data.Course</class>
         <class>com.lo54.projet.dao.data.Client</class>
         <class>com.lo54.projet.dao.data.Location</class>
-        <class>com.lo54.projet.dao.data.User</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Formation"/>

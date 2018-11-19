@@ -1,0 +1,9 @@
+.header {
+    height: 40px !important;
+    width: 100%;
+}
+
+
+.signOutButton {
+    float: right;
+}

@@ -8,6 +8,7 @@ package com.lo54.projet.ihm.controller;
 import com.lo54.projet.dao.data.User;
 import com.lo54.projet.ihm.model.HomeModel;
 import com.lo54.projet.service.interf.LoginService;
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
@@ -52,6 +53,14 @@ public class HomeController extends GenericController {
         FacesContext.getCurrentInstance().addMessage(null, message);
         RequestContext requestContext = RequestContext.getCurrentInstance();
         requestContext.addCallbackParam("loggedIn", homeModel.isLogged());
+    }
+
+    /**
+     *
+     */
+    public void signOut() throws IOException {
+        homeModel.setLogged(false);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/home.xhtml");
     }
 
 }

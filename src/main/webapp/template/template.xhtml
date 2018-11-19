@@ -15,16 +15,16 @@
 
         <h:body>
             <p:layout fullPage="true">
-                <p:layoutUnit position="north"  minSize="40" resizable="true" closable="false" collapsible="true" gutter="0">
-                    Projet LO54
+                <p:layoutUnit position="north"  minSize="40" resizable="true" closable="false" collapsible="true" gutter="0" >
+                    <ui:include src="header.xhtml"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="south" maxSize="65" closable="true" collapsible="true" gutter="0">
                     KRIFA Khaled - RIFFLART Florian
                 </p:layoutUnit>
 
-                <p:layoutUnit position="west" minSize="295" collapsible="false" gutter="0" rendered="#{homeModel.logged}">
-                    <ui:include src="menu.xhtml" />
+                <p:layoutUnit position="west" minSize="295" collapsible="false" gutter="0">
+                    <ui:include src="menu.xhtml"/>
                 </p:layoutUnit>
 
                 <p:layoutUnit position="center" gutter="0">

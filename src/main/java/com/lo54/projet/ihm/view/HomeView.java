@@ -7,6 +7,7 @@ package com.lo54.projet.ihm.view;
 
 import com.lo54.projet.ihm.controller.HomeController;
 import com.lo54.projet.ihm.model.HomeModel;
+import java.io.IOException;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,12 @@ public class HomeView extends GenericView {
     public void onLogin() {
         homeController.login();
     }
+
+    /**
+     *
+     */
+    public void onSignOut() throws IOException {
+        homeController.signOut();
+    }
+
 }
