@@ -11,10 +11,6 @@ import com.lo54.projet.service.interf.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author flori
- */
 @Service
 public class LoginServiceImpl implements LoginService {
 

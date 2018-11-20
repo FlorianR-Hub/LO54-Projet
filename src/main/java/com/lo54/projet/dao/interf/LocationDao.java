@@ -8,12 +8,12 @@ package com.lo54.projet.dao.interf;
 import java.util.List;
 
 /**
- * DAO class for LOCATION table.
+ * DAO interface for LOCATION table.
  */
 public interface LocationDao {
 
     /**
-     * Return the list of all cities names.
+     * Returns the list of all cities names.
      *
      * @return
      */

@@ -3,46 +3,19 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/template/template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
 
-    <ui:define name="content">
+    <ui:param name="pageForm" value="homeForm"/>
 
-        <f:event type="preRenderView" listener="#{homeView.initView()}" />
+    <ui:define name="content">
         <h:outputStylesheet library="css" name="home.css" />
 
-        <script type="text/javascript">
-            function handleLoginRequest(xhr, status, args) {
-                if (args.validationFailed || !args.loggedIn) {
-                    PF('dlg').jq.effect("shake", {times: 5}, 100);
-                } else {
-                    PF('dlg').hide();
-                    $('#loginLink').fadeOut();
-                }
-            }
-        </script>
-
-        <h:form>
+        <h:form id="homeForm">
             <p:panelGrid styleClass="panelGrid">
                 <h:graphicImage library="img" name="logo_primefaces.png" styleClass="image"/>
             </p:panelGrid>
-
-            <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
-
-            <p:dialog header="Login" widgetVar="dlg" resizable="false" draggable="false">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputLabel for="username" value="Username:" />
-                    <p:inputText id="username" value="#{homeModel.user.userName}" required="true" label="username" requiredMessage="Empty Username"/>
-
-                    <h:outputLabel for="password" value="Password:" />
-                    <p:password id="password" value="#{homeModel.user.password}" required="true" label="password" requiredMessage="Empty Password"/>
-
-                    <f:facet name="footer">
-                        <p:commandButton value="Login" update="growl menuForm headerForm" action="#{homeView.onLogin()}" oncomplete="handleLoginRequest(xhr, status, args)" />
-                    </f:facet>
-                </h:panelGrid>
-            </p:dialog>
         </h:form>
+
     </ui:define>
 
 </ui:composition>

@@ -8,12 +8,12 @@ package com.lo54.projet.dao.interf;
 import com.lo54.projet.dao.data.Course;
 
 /**
- * DAO class for COURSE table.
+ * DAO interface for COURSE table.
  */
 public interface CourseDao {
 
     /**
-     * Create a new Course in COURSE table.
+     * Creates a new Course in COURSE table.
      *
      * @param course the course to create.
      */

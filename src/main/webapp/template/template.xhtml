@@ -5,6 +5,19 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
+    <script type="text/javascript">
+        function handleLoginRequest(xhr, status, args) {
+            if (args.validationFailed || !args.loggedIn) {
+                PF('dlg').jq.effect("shake", {times: 5}, 100);
+            } else {
+                PF('dlg').hide();
+                $('#loginLink').fadeOut();
+            }
+        }
+    </script>
+
+    <f:event type="preRenderView" listener="#{templateView.initView()}" />
+
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
@@ -14,6 +27,24 @@
         </h:head>
 
         <h:body>
+            <h:form>
+                <p:growl id="growl" sticky="false" showDetail="true" life="2000" />
+
+                <p:dialog header="Login" widgetVar="dlg" resizable="false" draggable="false" modal="true" appendTo="@(view)" showEffect="fade" hideEffect="fade">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{templateModel.user.userName}" required="true" label="username" requiredMessage="Empty Username"/>
+
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{templateModel.user.password}" required="true" label="password" requiredMessage="Empty Password"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl menuForm headerForm #{pageForm}" action="#{templateView.onLogin()}" oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+
             <p:layout fullPage="true">
                 <p:layoutUnit position="north"  minSize="40" resizable="true" closable="false" collapsible="true" gutter="0" >
                     <ui:include src="header.xhtml"/>

@@ -6,7 +6,7 @@
 package com.lo54.projet.ihm.controller;
 
 import com.lo54.projet.dao.data.User;
-import com.lo54.projet.ihm.model.HomeModel;
+import com.lo54.projet.ihm.model.TemplateModel;
 import com.lo54.projet.service.interf.LoginService;
 import java.io.IOException;
 import javax.faces.application.FacesMessage;
@@ -17,57 +17,61 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 /**
- *
+ * Controller class for the template of each pages.
  */
-@Controller("homeController")
+@Controller("templateController")
 @Scope("session")
-public class HomeController extends GenericController {
+public class TemplateController extends GenericController {
 
     @Autowired
-    private HomeModel homeModel;
+    private TemplateModel templateModel;
 
     @Autowired
     private LoginService loginService;
 
     @Override
     public void initModel() {
-        homeModel.setUser(new User());
+        templateModel.setUser(new User());
     }
 
     /**
-     *
+     * Checks the credentials.
      */
     public void login() {
         FacesMessage message = null;
-        User user = loginService.getUser(homeModel.getUser().getUserName(), homeModel.getUser().getPassword());
+        User user = loginService.getUser(templateModel.getUser().getUserName(), templateModel.getUser().getPassword());
 
         if (user != null) {
-            homeModel.setLogged(true);
-            homeModel.getUser().setAdmin(user.isAdmin());
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", homeModel.getUser().getUserName());
+            templateModel.setLogged(true);
+            templateModel.getUser().setAdmin(user.isAdmin());
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", templateModel.getUser().getUserName());
         } else {
-            homeModel.setLogged(false);
+            templateModel.setLogged(false);
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
         }
 
         FacesContext.getCurrentInstance().addMessage(null, message);
         RequestContext requestContext = RequestContext.getCurrentInstance();
-        requestContext.addCallbackParam("loggedIn", homeModel.isLogged());
+        requestContext.addCallbackParam("loggedIn", templateModel.isLogged());
     }
 
     /**
+     * Disconnects the user.
      *
+     * @throws java.io.IOException
      */
     public void signOut() throws IOException {
-        homeModel.setLogged(false);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/home.xhtml");
+        templateModel.setLogged(false);
     }
 
     /**
+     * Displays the login dialog.
      *
+     * @throws java.io.IOException
      */
     public void signIn() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/pages/home.xhtml");
+        RequestContext context = RequestContext.getCurrentInstance();
+        context.execute("PF('dlg').show();");
     }
 
 }

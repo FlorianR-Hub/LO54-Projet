@@ -9,12 +9,12 @@ import com.lo54.projet.dao.data.CourseSession;
 import java.util.List;
 
 /**
- * DAO class for COURSE_SESSION table.
+ * DAO interface for COURSE_SESSION table.
  */
 public interface CourseSessionDao {
 
     /**
-     * Return the list of all course sessions.
+     * Returns the list of all course sessions.
      *
      * @return
      */

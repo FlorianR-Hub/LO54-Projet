@@ -8,12 +8,12 @@ package com.lo54.projet.dao.interf;
 import com.lo54.projet.dao.data.Client;
 
 /**
- * DAO class for CLIENT table.
+ * DAO interface for CLIENT table.
  */
 public interface ClientDao {
 
     /**
-     * Create a new client in CLIENT table.
+     * Creates a new client in CLIENT table.
      *
      * @param client the client to create.
      */

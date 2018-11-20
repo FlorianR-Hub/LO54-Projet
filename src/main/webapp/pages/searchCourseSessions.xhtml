@@ -6,18 +6,20 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ui:param name="pageForm" value="searchCourseSessionsForm"/>
+
     <ui:define name="content">
 
         <f:event type="preRenderView" listener="#{searchCourseSessionsView.initView()}" />
-        <h:outputStylesheet library="css" name="searchFormations.css" />
+        <h:outputStylesheet library="css" name="searchCourseSessions.css" />
 
-        <h:form id="form1" prependId="false">
-            <p:panelGrid rendered="#{not homeModel.logged}">
+        <h:form id="searchCourseSessionsForm" prependId="false">
+            <p:panelGrid rendered="#{not templateModel.logged}">
                 Please sign in to see the content.
             </p:panelGrid>
 
-            <p:accordionPanel id="accordion" prependId="false" rendered="#{homeModel.logged}">
-                <p:tab title="Search courses" rendered="true">
+            <p:accordionPanel prependId="false" rendered="#{templateModel.logged}">
+                <p:tab title="Search course sessions">
                     <p:dataTable id="formationDT" var="listCourseSessions" value="#{searchCourseSessionsModel.listCourseSessions}" sortBy="#{listCourseSessions.courseCode}" expandableRowGroups="true" widgetVar="formationTable"
                                  emptyMessage="No matching result" filteredValue="#{searchCourseSessionsModel.filteredCourseSessions}" selectionMode="single" selection="#{searchCourseSessionsModel.selectedCourseSession}"
                                  rowKey="#{listCourseSessions.courseSessionId}">
@@ -80,29 +82,30 @@
             </p:accordionPanel>
         </h:form>
 
-        <p:dialog id="dialog" header="Course session clients" widgetVar="clientDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" appendTo="@(body)" styleClass="dialog">
-            <p:outputPanel id="clientsDetails">
-                <h:form id="form2" prependId="false">
+        <p:dialog id="dialog" header="Course session clients" widgetVar="clientDialog" modal="true" appendTo="@(body)" showEffect="fade" hideEffect="fade" resizable="false" styleClass="dialog">
+            <h:form id="clientsDetailsForm" prependId="false">
+                <p:outputPanel id="clientsDetails" >
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="#{searchCourseSessionsModel.selectedCourseSession.courseCode} : #{searchCourseSessionsModel.selectedCourseSession.title}"/>
                         <p:progressBar styleClass="progressBarClientsDetails" value="#{searchCourseSessionsView.getFillingPercentage(searchCourseSessionsModel.selectedCourseSession.listClients.size(), searchCourseSessionsModel.selectedCourseSession.maxClients)}"
                                        labelTemplate="{value}% (#{searchCourseSessionsModel.selectedCourseSession.listClients.size()}/#{searchCourseSessionsModel.selectedCourseSession.maxClients})" displayOnly="true"/>
                     </h:panelGrid>
 
-                    <p:dataTable id="clientsDT" widgetVar="clientsDT" editable="true" var="clients" value="#{searchCourseSessionsModel.selectedCourseSession.listClients}" styleClass="clientsDT" rendered="#{homeModel.user.admin}">
-                        <p:column headerText="First name">
+                    <p:dataTable id="clientsDT" widgetVar="clientsDT" var="clients" value="#{searchCourseSessionsModel.selectedCourseSession.listClients}" styleClass="clientsDT"
+                                 scrollable="true" scrollHeight="200" scrollWidth="100%" rendered="#{templateModel.user.admin}" >
+                        <p:column headerText="First name" sortBy="#{clients.firstName}">
                             <h:outputText value="#{clients.firstName}" />
                         </p:column>
-                        <p:column headerText="Last name">
+                        <p:column headerText="Last name" sortBy="#{clients.lastName}">
                             <h:outputText value="#{clients.lastName}" />
                         </p:column>
-                        <p:column headerText="Address">
+                        <p:column headerText="Address" sortBy="#{clients.address}">
                             <h:outputText value="#{clients.address}" />
                         </p:column>
-                        <p:column headerText="Phone">
+                        <p:column headerText="Phone" sortBy="#{clients.phone}">
                             <h:outputText value="#{clients.phone}" />
                         </p:column>
-                        <p:column headerText="Mail">
+                        <p:column headerText="Mail" sortBy="#{clients.mail}">
                             <h:outputText value="#{clients.mail}" />
                         </p:column>
                     </p:dataTable>
@@ -126,7 +129,9 @@
                             <p:message for="address" />
 
                             <p:outputLabel for="phone" value="Phone : " />
-                            <p:inputText id="phone"  value="#{searchCourseSessionsModel.newClient.phone}" required="true"/>
+                            <p:inputText id="phone"  value="#{searchCourseSessionsModel.newClient.phone}" required="true" validatorMessage="Invalid phone number format">
+                                <f:validateRegex pattern="(0|\\+33|0033)[1-9][0-9]{8}" />
+                            </p:inputText>
                             <p:message for="phone" />
 
                             <p:outputLabel for="mail" value="Mail : " />
@@ -137,11 +142,11 @@
                         </h:panelGrid>
                     </p:panel>
 
-                    <p:commandButton styleClass="registerButton" value="Register" update="form1 form2" action="#{searchCourseSessionsView.onRegister()}">
+                    <p:commandButton styleClass="registerButton" value="Register" update="searchCourseSessionsForm clientsDetailsForm" action="#{searchCourseSessionsView.onRegister()}">
                         <f:setPropertyActionListener target="#{searchCourseSessionsModel.newClient.courseSession.id}" value="#{searchCourseSessionsModel.selectedCourseSession.courseSessionId}"/>
                     </p:commandButton>
-                </h:form>
-            </p:outputPanel>
+                </p:outputPanel>
+            </h:form>
 
         </p:dialog>
     </ui:define>

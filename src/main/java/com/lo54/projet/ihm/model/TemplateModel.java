@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Model class for the template of each pages.
  */
-@Component("homeModel")
+@Component("templateModel")
 @Scope("session")
-public class HomeModel {
+public class TemplateModel {
 
     private User user;
 

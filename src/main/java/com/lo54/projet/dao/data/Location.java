@@ -20,7 +20,7 @@ public class Location implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id; // will be generated automaticly when we add new city to the database
+    private int id;
 
     @Column(name = "CITY")
     private String city;

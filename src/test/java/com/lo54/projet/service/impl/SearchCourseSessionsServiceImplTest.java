@@ -47,7 +47,7 @@ public class SearchCourseSessionsServiceImplTest {
 
     // TODO : faire le test
     @Test
-    public void testBuildFormationsList() {
+    public void testBuildCourseSessionsList() {
 
     }
 

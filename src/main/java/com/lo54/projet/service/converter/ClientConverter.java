@@ -14,7 +14,7 @@ import com.lo54.projet.service.data.ClientIhm;
 public class ClientConverter {
 
     /**
-     * Convert a ClientIhm object to Client object.
+     * Converts a ClientIhm object to Client object.
      *
      * @param clientIhm object to convert.
      * @return
@@ -32,7 +32,7 @@ public class ClientConverter {
     }
 
     /**
-     * Convert a Client object to ClientIhm object.
+     * Converts a Client object to ClientIhm object.
      *
      * @param client object to convert.
      * @return

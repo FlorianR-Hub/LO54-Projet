@@ -25,13 +25,10 @@ public class SearchCourseSessionsView extends GenericView {
     @Autowired
     private SearchCourseSessionsController searchCourseSessionsController;
 
-    /**
-     * Initialize the view.
-     */
     @Override
     public void initView() {
-        // La méthode initView() est appelée pour chaque appel AJAX.
-        // On ne souhaite l'appeler qu'au démarrage de la page.
+        // The initView() method is called for each AJAX call.
+        // We only want to call it when we load the page.
         if (FacesContext.getCurrentInstance().getPartialViewContext().isAjaxRequest()) {
             return;
         }
@@ -40,19 +37,12 @@ public class SearchCourseSessionsView extends GenericView {
     }
 
     /**
-     *
+     * Call the register() method of the controller class.
      */
     public void onRegister() {
         searchCourseSessionsController.register();
     }
 
-    /**
-     *
-     * @param value
-     * @param filter
-     * @param locale
-     * @return
-     */
     public boolean filterByDate(Object value, Object filter, Locale locale) {
 
         if (filter == null) {
@@ -67,9 +57,11 @@ public class SearchCourseSessionsView extends GenericView {
     }
 
     /**
+     * Returns the fill percentage of a course session.
      *
-     * @param nbClients
-     * @param maxClients
+     * @param nbClients the number of clients registered in the course session.
+     * @param maxClients The maximum number of clients allowed in the course
+     * session.
      * @return
      */
     public float getFillingPercentage(int nbClients, int maxClients) {
