@@ -33,5 +33,6 @@
         <org-netbeans-modules-javascript2-requirejs.enabled>true</org-netbeans-modules-javascript2-requirejs.enabled>
         <org-netbeans-modules-projectapi.jsf_2e_language>JSP</org-netbeans-modules-projectapi.jsf_2e_language>
         <org-netbeans-modules-html-editor-lib.default-xhtml-public-id>-//W3C//DTD XHTML 1.1//EN</org-netbeans-modules-html-editor-lib.default-xhtml-public-id>
+        <netbeans.hint.licensePath>${project.basedir}/licenseheader.txt</netbeans.hint.licensePath>
     </properties>
 </project-shared-configuration>

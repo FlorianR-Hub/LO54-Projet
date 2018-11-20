@@ -1,13 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * LO54 Project
+ *
+ * KRIFA Khaled - RIFFLART Florian
+ *
+ * UTBM A2018
  */
 package com.lo54.projet.service.impl;
 
 import com.lo54.projet.dao.data.User;
 import com.lo54.projet.dao.interf.UserDao;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
