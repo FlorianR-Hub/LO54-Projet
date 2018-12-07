@@ -142,7 +142,7 @@
                         </h:panelGrid>
                     </p:panel>
 
-                    <p:commandButton styleClass="registerButton" value="Register" update="searchCourseSessionsForm clientsDetailsForm" action="#{searchCourseSessionsView.onRegister()}">
+                    <p:commandButton styleClass="registerButton" value="Register" update="searchCourseSessionsForm clientsDetailsForm" action="#{searchCourseSessionsView.onRegister()}" oncomplete="PF('formationTable').filter()" >
                         <f:setPropertyActionListener target="#{searchCourseSessionsModel.newClient.courseSession.id}" value="#{searchCourseSessionsModel.selectedCourseSession.courseSessionId}"/>
                     </p:commandButton>
                 </p:outputPanel>
