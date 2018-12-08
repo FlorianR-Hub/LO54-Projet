@@ -5,4 +5,23 @@
 .image {
     display:block;
     margin:auto;
+    padding-left: 60px;
+}
+
+h1, h2 {
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+    font-size: 92px;
+    padding: 40px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #2c2c2c;
+    background-color: white;
+    letter-spacing: .05em;
+    text-shadow:
+        4px 4px 0px #d5d5d5,
+        7px 7px 0px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 70px;
 }
