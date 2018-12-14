@@ -11,7 +11,7 @@
             <p:menuitem value="Home" url="/pages/home.xhtml" styleClass="#{view.viewId.contains('home') ? 'active' : ''}"/>
             <p:submenu label="Courses">
                 <p:menuitem value="Search courses" url="/pages/searchCourseSessions.xhtml" styleClass="#{view.viewId.contains('searchCourseSessions') ? 'active' : ''}" disabled="#{not templateModel.logged}"/>
-                <p:menuitem value="Create new course" url="/pages/createCourse.xhtml" styleClass="#{view.viewId.contains('createCourse') ? 'active' : ''}" disabled="#{not templateModel.logged}"/>
+                <p:menuitem value="Create new course" url="/pages/createCourse.xhtml" styleClass="#{view.viewId.contains('createCourse') ? 'active' : ''}" disabled="#{not templateModel.logged}"  rendered="#{templateModel.user.admin}"/>
             </p:submenu>
         </p:menu>
     </h:form>
